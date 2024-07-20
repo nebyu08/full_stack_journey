@@ -1,0 +1,17 @@
+h1{
+    color:red;
+}
+.temp{
+    color:green;
+}
+#temp2{
+    color:turquoise;
+}
+
+p[draggable="true"]{
+    color:purple
+}
+
+*{
+    color:bisque
+}

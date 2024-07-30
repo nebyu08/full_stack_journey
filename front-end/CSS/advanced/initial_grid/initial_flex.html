@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex</title>
+    <style>
+        .main_flex{
+            display: flex;
+        }
+        .element{
+            background-color: blue;
+            border:30px solid white;
+            height: 100px;
+            flex:1;
+        }
+        .first{
+            flex:2;
+        }
+        .second{
+            flex:0.5;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="main_flex">
+        <div class="first element"></div>
+        <div class="second element"></div>
+        <div class="element"></div>
+        <div class="element"></div>
+    </div>
+</body>
+</html>

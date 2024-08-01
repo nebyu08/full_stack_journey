@@ -1,36 +1,65 @@
+body{
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin:50px 50px 0px 50px;
+}
+h1{
+    font-size: 5rem;
+}
+span{
+    color:purple;
+}
+
 .main{
-    display: inline-block;
-    height: 300px;
-    width: 300px;
+    flex: 1;
 }
 
-.main >.left{
-    display: inline-block;
-    height: 300px;
-    width: 300px;
+footer{ 
+    text-align: right;
+    color:midnightblue;
+ }
+.tile-image{
+    float:left;
+    display: block;
+    height: 200px;
+    margin-right: 30px;
 }
-
-img{
+.card{
+    width:45%;
+}
+.left{
     float:left;
 }
 
-
-p{
-    font-family: 'Poppins';
-    font-style:normal
-    font-weight: 400;
-    font-display: swap;
-    src: url(https://fonts.gstatic.com/s/poppins/v21/pxiEyp8kv8JHgFVrJJnecmNE.woff2) format('woff2');
-    unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-
-h2{
-    {
-        font-family: 'Poppins';
-        font-style: bold;
-        font-weight: 400;
-        font-display: swap;
-        src: url(https://fonts.gstatic.com/s/poppins/v21/pxiEyp8kv8JHgFVrJJnecmNE.woff2) format('woff2');
-        unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-      }
+.right{
+    float:right;
 }
+
+
+
+
+@media (max-width:680){
+    .logo{
+        width: 100px;
+    }
+    h1{
+        font-sze:3.5rem;
+        text-align: center;
+    }
+    .card{
+        display: block;
+        width:100%;
+        text-align: justify;
+        margin-bottom: 30px;
+    }
+
+    .card img{
+        display: inline;
+        width:100%;
+        object-fit: cover;
+    }
+    
+}
+

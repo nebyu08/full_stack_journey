@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sizing</title>
+    <style>
+        .container{
+            display: grid;
+            grid-template-columns: 400px auto;
+            grid-template-rows: 100px 200px;
+            gap:10px;
+        }
+        .container *{
+            background-color:purple ;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="first"></div>
+        <div class="second"></div>
+        <div class="third"></div>
+        <div class="fourth"></div>
+    </div>
+    
+</body>
+</html>

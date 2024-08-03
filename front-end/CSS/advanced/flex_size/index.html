@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flexing</title>
+    <style>
+        .container{
+            display: flex;
+            gap:10px;
+        }
+        p{
+           background-color: turquoise;
+           flex-basis: 300px;
+           min-width: 100px;
+           max-width: 900px;
+           flex-grow: 0;
+           flex-shrink: 1;
+        }
+        .first{
+            flex:1;
+        }
+        .second{
+            flex:3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p class="first">math</p>
+        <p class="second">chemistry</p>
+        <p>biology</p>
+        <p>history</p>
+        <p>the best part of programming is that its super simple</p>
+    </div>
+    
+</body>
+</html>

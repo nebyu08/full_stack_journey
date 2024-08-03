@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>my Grid Placement</title>
+  <title>Grid Placement</title>
   <style>
     body {
       padding: 0;
@@ -26,12 +26,21 @@
       font-family: Arial, Helvetica, sans-serif;
       background-color: blueviolet;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
+
     }
-    .cowboy{
-      background-color: blue;
-      grid-column:span 2;
+
+    .cowboy {
+      background-color: #00B9FF;
+      grid-column: span 2;
+    }
+
+    .astronaut {
+      background-color: #03989E;
+      order: 1;
+      grid-column: span 2;
+
     }
   </style>
 </head>

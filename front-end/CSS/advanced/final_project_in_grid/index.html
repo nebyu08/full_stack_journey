@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modrian project</title>
+
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 0;
+            margin:0;
+        }
+        .container{
+            display:grid;
+            /* margin-left: auto;
+            margin-right: auto; */
+            background-color: black;
+            grid-template-columns: 320px 198px 153px 50px;
+            grid-template-rows:414px 130px 155px 20px;
+            gap: 9px;
+            height: 748px;
+            width: 748px;
+            place-content: center;
+        }
+        .red_one{
+            background-color: #e72f24;
+        }
+        
+        .grey_1{
+            background-color: #f0f1ec;
+            grid-column: span 3;
+        }
+        .grey_2{
+            background-color: #f0f1ec;
+            grid-row: span 2;
+        }
+
+        .grey_3{
+            background-color: #f0f1ec;
+            grid-row:span 2;
+            grid-column:span 2 ;
+        }
+        
+        .blue{
+            background-color: #004592;
+            border-bottom-style: solid;
+            border-bottom-width:10px;
+        }
+        .grey_4{
+            background-color: #f0f1ec;
+            grid-row:span 2;
+        }
+        .grey_5{
+            background-color: #f0f1f0ec;
+    
+        }
+
+        .yellow{
+            background-color: #f9d01e;
+        }
+        
+        .black{
+            background-color: #000000;
+
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="red_one"></div>
+
+        <div class="grey_1"> </div>
+
+        <div class="grey_2"> </div>
+        
+        <div class="grey_3"></div>
+
+        <div class="blue"></div>
+
+        <div class="grey_4"></div>
+
+        <div class="grey_5"> </div>
+        
+        <div class="yellow"></div>
+        
+        <div class="black"></div>
+    </div>
+    
+</body>
+</html>

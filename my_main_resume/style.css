@@ -3,6 +3,7 @@ body{
     font-family: 'Roboto Condensed';
 }
 
+
 /*this is the nav bar*/
 .header{   
     background-color: white;
@@ -39,6 +40,10 @@ body{
     background-color: #dfd8ca;
     color: green;
 }
+
+/*this is the mobile format of the above code*/
+
+
 
 /*this first part*/
 

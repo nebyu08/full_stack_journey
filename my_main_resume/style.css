@@ -1,0 +1,48 @@
+body{
+    background-color: #fbf3e4;
+    font-family: 'Roboto Condensed';
+}
+
+/*this is the nav bar*/
+.header{   
+    background-color: white;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.header ul{
+    display: flex;
+    justify-content:center ; 
+    align-items: center;  
+}
+
+.header li{
+    list-style: none;
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.header a{
+    text-align: center;
+    text-decoration: none;
+    padding: 100px;
+}
+
+.header a:hover{
+ background-color: #dfd8ca;
+}
+
+.header a.active{
+    background-color: #dfd8ca;
+}
+
+.heading h1{
+    padding-top: 70px;
+    color: #b91646;
+    font-weight: 700;
+}
+
+/*this is the body*/

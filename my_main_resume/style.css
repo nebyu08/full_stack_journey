@@ -35,10 +35,10 @@ body{
  background-color: #dfd8ca;
 }
 
-.header a.active{
+.header li.active a{
     background-color: #dfd8ca;
+    color: green;
 }
-
 
 /*this first part*/
 
@@ -85,6 +85,8 @@ body{
 
 .image-section img{   
     border-radius: 50%;
+    height: 250px;
+    width: 250px;
 }
 
 /*skills part*/
@@ -124,9 +126,9 @@ body{
 
 /*projects working on*/
 .main_container{
-    height: 100vh;
     display: flex;
-    justify-content: space-around;
+    height: 100vh;
+    justify-content:space-around;
     align-items: center;
     float: 0;
 }
@@ -136,11 +138,24 @@ body{
     list-style: none;
     padding: 30px;
     border: 2px solid black;
+    border-radius: 20%;
     background-color: #d9d9d9;
     height: 100px;
-    width: 100px;
+    width: 200px;
+    margin: 40px;
+
 }
 
-
-
-.main_container
+/*lets get in touch*/
+.contact{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+}
+.contact h2,.contact p{
+    display: block;
+}
+.contact .imgs{
+   display: inline;
+}

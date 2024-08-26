@@ -39,10 +39,108 @@ body{
     background-color: #dfd8ca;
 }
 
-.heading h1{
-    padding-top: 70px;
-    color: #b91646;
-    font-weight: 700;
+
+/*this first part*/
+
+.heading{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-/*this is the body*/
+.heading-h{
+    color: #b91646;
+    font-family: "maharlika";
+    font-weight: 700;
+    font-size: 50px;
+    padding-bottom: 100px;    
+}
+
+.heading-p{
+  height: 50px;
+  width: 320px;
+  border: 3px solid black;
+  padding:30px;
+  margin: 10px;
+  background-color: #d6b588;
+  text-align: center;
+}
+
+.heading-p p{
+    font-family: "Italianno";
+    font-weight: 300;
+}
+
+/*profile part*/
+.image-section {
+    height: 100vh;  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.image-section img{   
+    border-radius: 50%;
+}
+
+/*skills part*/
+.container{
+    display: flex;
+    justify-content: space-around;
+    height: 100vh;
+}
+
+.container h2{
+    color: #b91646;
+    font-weight: 700;
+    font-size: 50px;
+    
+}
+
+.container p{
+    font-weight: 500;
+    font-size: 600;
+}
+
+.logos img{
+    height: 200px;
+    width: 250px;
+}
+
+.logos{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,1fr);
+    gap:10px;
+}
+
+.grid-item{
+    padding: 10px;
+}
+
+/*projects working on*/
+.main_container{
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    float: 0;
+}
+
+.main_container li{
+    display: inline-block;
+    list-style: none;
+    padding: 30px;
+    border: 2px solid black;
+    background-color: #d9d9d9;
+    height: 100px;
+    width: 100px;
+}
+
+
+
+.main_container

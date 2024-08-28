@@ -10,32 +10,36 @@ body{
     padding: 0;
 }
 
-.players{
-    display: flex;
-    flex-direction: row;
-}
-
-.player h1{
+.heading h1{
     font-family: "Lobster",sans-serif;
     font-weight: 700;
     font-style:normal;
     font-size: 128px;
-    color: #4ecca3;
-    margin-top: 10px;
+    color: #4ecca3
 }
 
-h2{
+.players{
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+}
+
+.players h2{
     font-family: "Indie Flower", cursive;
     font-weight: 10;
     font-style:italic;
     font-size: 30px;
     color: #4ecca3;
-    margin: 85px;
+    margin: auto;
+    padding: 40px;
+}
+
+.players img{
     padding: 10px;
+    margin: auto;
 }
 
 footer{
     color:white;
     font-family: "Indie Flower", cursive;
 }
-

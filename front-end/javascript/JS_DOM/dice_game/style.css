@@ -19,7 +19,7 @@ body{
 }
 
 .players{
-    display: flex;
+   display: flex;
     flex-direction: row;
     gap: 100px;
 }
@@ -40,6 +40,7 @@ body{
 }
 
 footer{
+    margin-top: 15px;
     color:white;
     font-family: "Indie Flower", cursive;
 }

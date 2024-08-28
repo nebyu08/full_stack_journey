@@ -1,15 +1,4 @@
 //if its reloaded the header message is changed
-function refresh_checker(){
-    const perfEntries=performance.getEntriesByType("navigation");
-
-    if(perfEntries.lenght>0 && perfEntries[0].type==='relo'){
-        return true;
-
-    }else{
-       return false;
-    }
-}
-
 function generate_random(){
     var players=[];
     
@@ -25,6 +14,13 @@ function generate_random(){
 
 function change_header(player){
     var header=document.querySelector('h1'); 
+    if(header){
+        console.log('the header element exist');
+    }
+    else{
+        console.log('the header element doesnt exist')
+    }
+
     if(player==='player1'){  
         header.textContent='player 1 wins!';
     }
@@ -34,32 +30,38 @@ function change_header(player){
     else{
         header.textContent='its a tie!'
     }
-
 }
 
-
 function rolled_image(num1,num2){
-    var player1_img=document.querySelector('.player1 img');
-    var player2_img=document.querySelector('.player2 img');
+    var player1_img=document.querySelector('#img1');
+    var player2_img=document.querySelector('#img2');
+
+    //check wether the image element exist
+    if(player1_img){
+        console.log('the element exist');
+    }
+    else{
+        console.log('the element doesnt exist')
+    }
 
     //for the first player
     if(num1===1){
-        player1_img.src='images/dice1.png';
+        player1_img.src='./images/dice1.png';
     }
     else if(num1==2){
-        player1_img.src='images/dice2.png';
+        player1_img.src='./images/dice2.png';
     }
     else if(num1===3){
-        player1_img.src='images/dice3.png';
+        player1_img.src='./images/dice3.png';
     }
     else if(num1===4){
-        player1_img.src='images/dice4.png';
+        player1_img.src='./images/dice4.png';
     }
     else if(num1==5){
-        player1_img.src='images/dice5.png';
+        player1_img.src='./images/dice5.png';
     }
     else{
-        player1_img.src='images/dice6.png';
+        player1_img.src='./images/dice6.png';
     }
 
     //for the second player
@@ -88,21 +90,25 @@ function roll_dice(){
     var player1=players[0];
     var player2=players[1];
 
-    var rereshed=refresh_checker();
-    if(rereshed){
-        //lets generate the image
-        rolled_image(player1,player2);
+    //lets generate the image
+    rolled_image(player1,player2);
 
-        if(player1>player2){
-            //player 1 won
-            change_header('player1');
-        }
-        else if(player2>player1){
-            change_header('player2');
-        }
-        else{
-            change_header('tie');
-        }
+    if(player1>player2){
+        //player 1 won
+        change_header('player1');
+    }
+    else if(player2>player1){
+        change_header('player2');
+    }
+    else{
+        change_header('tie');
     }
 }
 
+document.addEventListener("DOMContentLoaded",()=> {
+    const perfEntries=performance.getEntriesByType("navigation");
+        if(perfEntries.length>0 && perfEntries[0].type==='reload'){
+            //call this function when page is refreshed
+            roll_dice();
+        }
+    });

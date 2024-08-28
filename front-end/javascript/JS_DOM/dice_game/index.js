@@ -14,18 +14,12 @@ function generate_random(){
 
 function change_header(player){
     var header=document.querySelector('h1'); 
-    if(header){
-        console.log('the header element exist');
-    }
-    else{
-        console.log('the header element doesnt exist')
-    }
 
     if(player==='player1'){  
-        header.textContent='player 1 wins!';
+        header.textContent='player 1 wins! 🚩';
     }
     else if(player==='player2'){
-        header.textContent='player 2 wins!';
+        header.textContent='🚩 player 2 wins!';
 }
     else{
         header.textContent='its a tie!'
@@ -44,48 +38,10 @@ function rolled_image(num1,num2){
         console.log('the element doesnt exist')
     }
 
-    player1_img.src='./images/dice'+num1+'.png';
-    player2_img.src='./images/dice'+num2+'.png';
+    player1_img.setAttribute('src','./images/dice'+num1+'.png');
 
-    //for the first player
-    // if(num1===1){
-    //     player1_img.src='./images/dice1.png';
-    // }
-    // else if(num1==2){
-    //     player1_img.src='./images/dice2.png';
-    // }
-    // else if(num1===3){
-    //     player1_img.src='./images/dice3.png';
-    // }
-    // else if(num1===4){
-    //     player1_img.src='./images/dice4.png';
-    // }
-    // else if(num1==5){
-    //     player1_img.src='./images/dice5.png';
-    // }
-    // else{
-    //     player1_img.src='./images/dice6.png';
-    // }
+    player2_img.setAttribute('src','./images/dice'+num2+'.png')
 
-    // //for the second player
-    // if(num2===1){
-    //     player2_img.src='images/dice1.png';
-    // }
-    // else if(num2==2){
-    //     player2_img.src='images/dice2.png';
-    // }
-    // else if(num2===3){
-    //     player2_img.src='images/dice3.png';
-    // }
-    // else if(num2===4){
-    //     player2_img.src='images/dice4.png';
-    // }
-    // else if(num2==5){
-    //     player2_img.src='images/dice5.png';
-    // }
-    // else{
-    //     player2_img.src='images/dice6.png';
-    // }
 }
 
 function roll_dice(){

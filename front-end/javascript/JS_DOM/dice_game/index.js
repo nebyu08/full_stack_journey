@@ -44,45 +44,48 @@ function rolled_image(num1,num2){
         console.log('the element doesnt exist')
     }
 
-    //for the first player
-    if(num1===1){
-        player1_img.src='./images/dice1.png';
-    }
-    else if(num1==2){
-        player1_img.src='./images/dice2.png';
-    }
-    else if(num1===3){
-        player1_img.src='./images/dice3.png';
-    }
-    else if(num1===4){
-        player1_img.src='./images/dice4.png';
-    }
-    else if(num1==5){
-        player1_img.src='./images/dice5.png';
-    }
-    else{
-        player1_img.src='./images/dice6.png';
-    }
+    player1_img.src='./images/dice'+num1+'.png';
+    player2_img.src='./images/dice'+num2+'.png';
 
-    //for the second player
-    if(num2===1){
-        player2_img.src='images/dice1.png';
-    }
-    else if(num2==2){
-        player2_img.src='images/dice2.png';
-    }
-    else if(num2===3){
-        player2_img.src='images/dice3.png';
-    }
-    else if(num2===4){
-        player2_img.src='images/dice4.png';
-    }
-    else if(num2==5){
-        player2_img.src='images/dice5.png';
-    }
-    else{
-        player2_img.src='images/dice6.png';
-    }
+    //for the first player
+    // if(num1===1){
+    //     player1_img.src='./images/dice1.png';
+    // }
+    // else if(num1==2){
+    //     player1_img.src='./images/dice2.png';
+    // }
+    // else if(num1===3){
+    //     player1_img.src='./images/dice3.png';
+    // }
+    // else if(num1===4){
+    //     player1_img.src='./images/dice4.png';
+    // }
+    // else if(num1==5){
+    //     player1_img.src='./images/dice5.png';
+    // }
+    // else{
+    //     player1_img.src='./images/dice6.png';
+    // }
+
+    // //for the second player
+    // if(num2===1){
+    //     player2_img.src='images/dice1.png';
+    // }
+    // else if(num2==2){
+    //     player2_img.src='images/dice2.png';
+    // }
+    // else if(num2===3){
+    //     player2_img.src='images/dice3.png';
+    // }
+    // else if(num2===4){
+    //     player2_img.src='images/dice4.png';
+    // }
+    // else if(num2==5){
+    //     player2_img.src='images/dice5.png';
+    // }
+    // else{
+    //     player2_img.src='images/dice6.png';
+    // }
 }
 
 function roll_dice(){

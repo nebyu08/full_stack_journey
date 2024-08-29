@@ -1,12 +1,20 @@
-$('h1').addClass('big-class margin-0');
+$('button').click(function(){
+    $('h1').css("color","red");
+})
 
 
+$(document).keypress(function(event){
+    $('h1').text(event.key);
+})
 
-$('h1').text("DanDaDaN");
 
-$('button').html('<em>Doom</em>');
+$('h1').on("mouseover",function(){
+    $('h1').css("color","purple")
+})
 
-//console.log($('a').attr("href"));
-$('a').attr("href","https://www.x.com");
-
-console.log($('a').attr("href"));
+//hide elements
+$('button').click(function(){
+    $('h1').slideUp().slideDown().animate({
+        opacity:0.3
+    });
+})

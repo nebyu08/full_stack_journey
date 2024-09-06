@@ -75,3 +75,10 @@ button{
 .blue{
     background-color: #0000ff;
 }
+
+
+/* this adds the effect of the click */
+.clicked{
+    box-shadow: 2px 2px 2px #ffffff;
+    background-color: grey;
+}

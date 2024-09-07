@@ -1,0 +1,17 @@
+{
+  "name": "nns",
+  "version": "1.0.0",
+  "description": "this is just dummy npm packages",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "nebeiii",
+  "license": "ISC",
+  "dependencies": {
+    "sillyname": "^0.1.0",
+    "superheroes": "^3.0.0",
+    "superheros": "^1.0.0"
+  }
+}

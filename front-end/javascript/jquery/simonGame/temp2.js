@@ -3,57 +3,32 @@ function displayLevel(level){
 }
 
 function clickSound(charachters){
-    var i=0;
-    var timeDelay=1000 //one second
+   var i=0;
+   while(i<charachters.length){
+    var charachter=charachters[i];
+    var audio=new Audio();
 
-    console.log("the click sound is being activated");
+    audio.src='sounds/'+charachter+'.mp3';
 
-    charachters.forEach(function (charachter,index){
-       setTimeout(function(){
-        var audio=new Audio();
-        switch(charachter)
-        {
-            case 'b':
-                audio.src='sounds/blue.mp3';
-                break;
-            case 'g':
-                audio.src='sounds/green.mp3';
-                break;
-            case 'r':
-                audio.src='sounds/red.mp3';
-                break;
-            case 'y':
-                audio.src='sounds/yellow.mp3';
-                break;
-            default:
-                console.log('none');
-        }
-        console.log("i am clicking",charachter);
-
-                audio.play().catch(function(error){
-                console.error("this error happend",error);
-            });
-        });
-    });
+    //add a bit of pause
+    setTimeout(function(){
+        audio.play();
+    },100);
+    i++;
+   };
 }
 
 function clickEffect(element_ids){
-    console.log("this is the click effect",element_ids);
-  //lets add remove class
-  $(document).ready(function(){
-        $(element_ids).on('click',function(){
-            var currnetButton=$(this);
+    var i=0;
+    while(i<element_ids.length){
+        var element=element_ids[i];
+        $('#'+element).addClass('clicked');
+        setTimeout(function(){
+            $('#'+element).removeClass('clicked');
+        },100);
 
-            setTimeout(function(){
-            currnetButton.addClass('clicked');
-            console.log("is the effect on or what");
-        },1000);
-
-        currnetButton.removeClass('clicked');
-        console.log("it has been removed");
-
-        });
-  })
+        i++;
+    }
   
 }
 

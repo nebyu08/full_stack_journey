@@ -4,16 +4,19 @@ function displayLevel(level){
 
 function clickSound(charachters){
    var i=0;
-   while(i<charachters.length){
-    var charachter=charachters[i];
-    var audio=new Audio();
 
+   while(i<charachters.length){
+    var audio=new Audio();
+    var charachter=charachters[i];
+    
     audio.src='sounds/'+charachter+'.mp3';
 
     //add a bit of pause
-    setTimeout(function(){
-        audio.play();
-    },100);
+    // setTimeout(function(){
+    //     audio.play();
+    // },1000);
+
+    audio.play();
     i++;
    };
 }
@@ -23,6 +26,7 @@ function clickEffect(element_ids){
     while(i<element_ids.length){
         var element=element_ids[i];
         $('#'+element).addClass('clicked');
+
         setTimeout(function(){
             $('#'+element).removeClass('clicked');
         },100);
@@ -45,13 +49,16 @@ function lost(){
 }
 
 function patternChecker(true_char,player_pattern){
+    //content check
     for(var i=0;i<player_pattern.length;i++){
-        if(true_char[i]!=player_pattern[i]){
+        if(true_char[i] != player_pattern[i]){
             return "gameover";
         }
     }
     
+    //length check
     if(true_char.length!=player_pattern.length){
+        console.log("they dont have the same length brev");
         return "gameover";
     }
     return "ongoing";        
@@ -62,16 +69,16 @@ function numberToPattern(numberPaterns){
     for(var i=0;i<numberPaterns.length;i++){
         switch(numberPaterns[i]){
             case 1:
-                pattern.push('g');
+                pattern.push('green');
                 break;
             case 2:
-                pattern.push('r');
+                pattern.push('red');
                 break;
             case 3:
-                pattern.push('y');
+                pattern.push('yellow');
                 break;
             case 4:
-                pattern.push('b');
+                pattern.push('blue');
                 break;
         }
     }
@@ -83,6 +90,12 @@ function generateGamePattern(pattern){
     var temp=Math.floor(Math.random()*4+1);
     pattern.push(temp);
     return pattern;
+}
+
+function startOver(){
+    level=1;
+    state='ongoing';
+    game();
 }
 
 function game(){
@@ -97,9 +110,10 @@ function game(){
 
     //generate the patterns to be shown
     while(state==="ongoing"){
-        //lets display the level
-        displayLevel(level)
-        
+
+        //display level
+        displayLevel(level);
+             
         if(level>4){
             break;
         }
@@ -111,23 +125,38 @@ function game(){
         clickEffect(gamePattern);
         clickSound(gamePattern);
         
-        //user pattern
-        $(':button').click(function(){
-            var buttons=$(this).attr('id');
-            console.log("the button clicked is",buttons);
-            userPattern.push(buttons);
-
-            clickEffect(userPattern);
-            clickSound(userPattern);
-            
-        })
-
-        //comparision
+        //wait for user input
         setTimeout(function(){
+            //user pattern
+            $(':button').click(function(){
+
+                var buttons=$(this).attr('id');
+               console.log("the button clicked is",buttons);
+                userPattern.push(buttons);
+
+                clickEffect(userPattern);
+                clickSound(userPattern);
+                
+            })
+        },1000);
+
+        //pattern cross check
+        setTimeout(function(){
+            console.log("game pattern to be checked",gamePattern);
+            console.log("user pattern to be checked",userPattern);
+
             state=patternChecker(gamePattern,userPattern);
-        },1000); 
+        },1000);
+        
 
         level++;
+
+        if(state==='gameover'){
+            
+            lost();
+        }       
+
+        startOver();
 
     }
 
@@ -136,8 +165,8 @@ function game(){
 
 $(document).keypress(function(event){
     if(event.key!='') {
-        console.log("you clicked: "+event.key);
-        game();
+        //console.log("you clicked: "+event.key);
+        game();   
     }
 });
 

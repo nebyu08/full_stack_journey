@@ -68,6 +68,6 @@ button{
 
 /* this adds the effect of the click */
 .clicked{
-    box-shadow: 20px 20px 20px #ffffff;
+    box-shadow: 10px 10px 20px #ffffff;
     background-color: grey;
 }

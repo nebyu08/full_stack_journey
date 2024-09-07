@@ -41,17 +41,6 @@ button{
 
 }
 
-/* .buttons{
-    display: grid;
-    gap:30px;
-    column-gap: 40px;
-    row-gap: 20px;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    place-items: center;
-    padding: 0;
-    margin: 0;
-} */
 
 .container{
     display: grid;
@@ -79,6 +68,6 @@ button{
 
 /* this adds the effect of the click */
 .clicked{
-    box-shadow: 2px 2px 2px #ffffff;
+    box-shadow: 20px 20px 20px #ffffff;
     background-color: grey;
 }

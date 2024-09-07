@@ -4,11 +4,13 @@ function displayLevel(level){
 
 function clickSound(charachters){
     var i=0;
-    var audio=new Audio();
-    var timeDelay=1000
+    var timeDelay=1000 //one second
+
     console.log("the click sound is being activated");
 
     charachters.forEach(function (charachter,index){
+       setTimeout(function(){
+        var audio=new Audio();
         switch(charachter)
         {
             case 'b':
@@ -26,27 +28,33 @@ function clickSound(charachters){
             default:
                 console.log('none');
         }
-        setTimeout(function(){
-            audio.play().catch(function(error){
-                console.error();
-            },index*timeDelay);
-        })
-       
+        console.log("i am clicking",charachter);
+
+                audio.play().catch(function(error){
+                console.error("this error happend",error);
+            });
+        });
     });
 }
 
 function clickEffect(element_ids){
-    console.log("the click effect is being activated");
-    var i=0;
-    
-    while (i<element_ids.length){
-            var charachter=element_ids[i];
-            $(charachter).addClass("clicked");
+    console.log("this is the click effect",element_ids);
+  //lets add remove class
+  $(document).ready(function(){
+        $(element_ids).on('click',function(){
+            var currnetButton=$(this);
+
             setTimeout(function(){
-                $(charachter).removeClass("clicked"),1000
-            })
-            i++;
-    }   
+            currnetButton.addClass('clicked');
+            console.log("is the effect on or what");
+        },1000);
+
+        currnetButton.removeClass('clicked');
+        console.log("it has been removed");
+
+        });
+  })
+  
 }
 
 function lost(){
@@ -66,6 +74,10 @@ function patternChecker(true_char,player_pattern){
         if(true_char[i]!=player_pattern[i]){
             return "gameover";
         }
+    }
+    
+    if(true_char.length!=player_pattern.length){
+        return "gameover";
     }
     return "ongoing";        
 }
@@ -88,6 +100,13 @@ function numberToPattern(numberPaterns){
                 break;
         }
     }
+    
+    return pattern;
+}
+
+function generateGamePattern(pattern){
+    var temp=Math.floor(Math.random()*4+1);
+    pattern.push(temp);
     return pattern;
 }
 
@@ -102,11 +121,11 @@ function game(){
     var pattern=[];
 
     //generate the patterns to be shown
-    while(level!=0){
+    while(state==="ongoing"){
         //lets display the level
         displayLevel(level)
         
-        if(level>2){
+        if(level>4){
             break;
         }
         
@@ -116,6 +135,22 @@ function game(){
 
         clickEffect(gamePattern);
         clickSound(gamePattern);
+        
+        //user pattern
+        $(':button').click(function(){
+            var buttons=$(this).attr('id');
+            console.log("the button clicked is",buttons);
+            userPattern.push(buttons);
+
+            clickEffect(userPattern);
+            clickSound(userPattern);
+            
+        })
+
+        //comparision
+        setTimeout(function(){
+            state=patternChecker(gamePattern,userPattern);
+        },1000); 
 
         level++;
 
@@ -123,11 +158,6 @@ function game(){
 
 }
 
-function generateGamePattern(pattern){
-    var temp=Math.floor(Math.random()*4+1);
-    pattern.push(temp);
-    return pattern;
-}
 
 $(document).keypress(function(event){
     if(event.key!='') {
@@ -135,3 +165,5 @@ $(document).keypress(function(event){
         game();
     }
 });
+
+

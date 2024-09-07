@@ -83,7 +83,7 @@ function numberToPattern(numberPaterns){
 function game(){
     //state game
     var state="ongoing";
-    var counter=1;
+    var counter=;
 
     //var playerInput=[];
     var gamePattern=[];

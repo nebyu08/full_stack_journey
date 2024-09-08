@@ -7,7 +7,7 @@ import fs from 'fs';
 const questions=[
     {
         type:'input',
-        name:'given-name',
+        
         message:'Enter your Name',
         name:'URL'
     },

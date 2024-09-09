@@ -71,3 +71,7 @@ button{
     box-shadow: 10px 10px 20px #ffffff;
     background-color: grey;
 }
+
+.lost{
+    background-color: red;
+}

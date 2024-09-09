@@ -4,19 +4,20 @@ function displayLevel(level){
 
 function clickSound(charachters){
    var i=0;
-
+   var audio=new Audio();
+    
    while(i<charachters.length){
-    var audio=new Audio();
+   
     var charachter=charachters[i];
     
     audio.src='sounds/'+charachter+'.mp3';
 
     //add a bit of pause
-    // setTimeout(function(){
-    //     audio.play();
-    // },1000);
+     setTimeout(function(){
+         audio.play();
+     },1000);
 
-    audio.play();
+    //audio.play();
     i++;
    };
 }
@@ -38,11 +39,14 @@ function clickEffect(element_ids){
 
 function lost(){
     $('h1').text('game over.press any key to restart')
+    console.log("is the backgroun red yet or ..")
     $('body').css('background-color','red');
     //play the audio
     var audio=new Audio();
     audio.src='sounds/wrong.mp3';
     audio.play();
+
+
     
     //return game state
     return "gameover";
@@ -61,6 +65,7 @@ function patternChecker(true_char,player_pattern){
         console.log("they dont have the same length brev");
         return "gameover";
     }
+
     return "ongoing";        
 }
 
@@ -138,7 +143,7 @@ function game(){
                 clickSound(userPattern);
                 
             })
-        },1000);
+        },10000);
 
         //pattern cross check
         setTimeout(function(){
@@ -152,11 +157,11 @@ function game(){
         level++;
 
         if(state==='gameover'){
-            
             lost();
+            return console.log("game over time to exit");
         }       
 
-        startOver();
+        //startOver();
 
     }
 
@@ -164,7 +169,7 @@ function game(){
 
 
 $(document).keypress(function(event){
-    if(event.key!='') {
+    if(event.key!='' || event.key=='r') {
         //console.log("you clicked: "+event.key);
         game();   
     }

@@ -18,7 +18,7 @@ app.put("/user/nebs",(req,res)=>{
 
 //patching
 app.patch("user/nebs",(req,res)=>{
-    res.sendStatus(201);
+    res.sendStatus(200);
 });
 
 //delete
@@ -28,7 +28,7 @@ app.delete("user/nebs",(req,res)=>{
 
 //about
 app.get("/about",(req,res)=>{
-    res.send("<h1>About Us</h1>")
+    res.send("<h1>About Us</h1>");
 });
 
 app.get("/contact",(req,res)=>{

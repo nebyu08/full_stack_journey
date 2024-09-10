@@ -10,7 +10,7 @@ const questions=[
         
         message:'Enter your Name',
         name:'URL'
-    },
+    },  
 ]
 
 inquirer.prompt(questions).then(answers=>{

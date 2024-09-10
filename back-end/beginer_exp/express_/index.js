@@ -21,3 +21,6 @@ app.get("/contact",(req,res)=>{
 app.listen(port,()=>{
     console.log(`server runnning on ${port}`);
 });
+
+
+console.log("hello")

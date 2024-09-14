@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/index.css">
+    <title>The Daily Planet</title>
+</head>
+<body>
+        <div class="main">
+            <script>
+                const imageDir = <%- images %>;
+                let currentIndex='first';
+
+                function changeBackground(){
+                    const htmlElement=document.querySelector('.main');
+                    htmlElement.style.backgroundImage=`url(${imageDir[currentIndex]})`;
+
+                    if(currentIndex<3){
+                        currentIndex+=1
+                    }
+                    else{
+                        currentIndex=0;
+                    }
+                 }
+                 
+
+                setInterval(changeBackground,5000);
+                changeBackground();  //for initializing the first background image setting
+
+            </script>
+
+            <div class="header">
+                <div class="image-div header-child">
+                    <img src="/public/img/alien-svgrepo-com.svg" class="logo">Bloggy
+                    <!-- <span class="blog-title">Bloggy</span> -->
+                </div>
+
+                <div class="header-child">
+                    <a href="#">SIGN IN</a>
+                </div>
+            </div>
+
+        </div>
+
+</body>
+</html>

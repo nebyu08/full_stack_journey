@@ -1,10 +1,10 @@
 .main{
     width: 100%;
     height: 100vh;
-    display: flex;
-    background-image: url("img/StockCake-Baking\ Fresh\ Bread_1726300843.jpg");
+    display: flex;  
+    background-image:"img/StockCake-Cranberry Cooking Pot_1726300952.jpg";
     background-size:cover;
-    background-position: center;;
+    background-position: center;
     color:white;
     padding: 0;
     margin: 0;
@@ -33,4 +33,12 @@
     margin-top: 0;
     font-size: 1.4em;
     font-weight: bold;
+}
+
+.header-child{
+    color:white;
+}
+
+.header-child:hover{
+    color: grey;
 }

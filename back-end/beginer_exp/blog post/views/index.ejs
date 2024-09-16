@@ -3,36 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/public/index.css">
+    <link rel="stylesheet" href="/index.css">
+    <link rel="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <title>The Daily Planet</title>
 </head>
 <body>
         <div class="main">
             <script>
-                const imageDir = <%- images %>;
-                let currentIndex='first';
 
-                function changeBackground(){
-                    const htmlElement=document.querySelector('.main');
-                    htmlElement.style.backgroundImage=`url(${imageDir[currentIndex]})`;
+            const images=[
+                "/img/StockCake-Cranberry Cooking Pot_1726300952.jpg",
+                "/img/StockCake-Futuristic Helmet Design_1726300923.jpg",
+                "/img/StockCake-Baking Fresh Bread_1726300843.jpg",
+            ];
 
-                    if(currentIndex<3){
-                        currentIndex+=1
-                    }
-                    else{
-                        currentIndex=0;
-                    }
-                 }
-                 
+            let currentIndex=0;
 
-                setInterval(changeBackground,5000);
-                changeBackground();  //for initializing the first background image setting
+            function changeBackground(){
+                const htmlElement=document.querySelector('.main');
+                htmlElement.style.backgroundImage=`url(${images[currentIndex]})`;
+
+                currentIndex=(currentIndex+1)%images.length;
+
+            }
+            setInterval(changeBackground,5000);
+
+            changeBackground();  //for initializing the first background image setting
 
             </script>
 
             <div class="header">
                 <div class="image-div header-child">
-                    <img src="/public/img/alien-svgrepo-com.svg" class="logo">Bloggy
+                    <img src="/img/alien-svgrepo-com.svg" class="logo">Bloggy
                     <!-- <span class="blog-title">Bloggy</span> -->
                 </div>
 
@@ -43,5 +45,10 @@
 
         </div>
 
+        <!-- why bloging is cool -->
+
+        <div>
+            
+        </div>
 </body>
 </html>

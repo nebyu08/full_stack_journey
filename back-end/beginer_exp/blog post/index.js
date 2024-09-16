@@ -18,6 +18,14 @@ app.get('/',(req,res)=>{
     res.render('index');
 })
 
+app.get('/blog',(req,res)=>{
+    res.render('write');
+})
+
+app.get('/about',(req,res)=>{
+    res.render('about')
+})
+
 app.listen(port,()=>{
     console.log(`server listening on the port ${port}`);
 })

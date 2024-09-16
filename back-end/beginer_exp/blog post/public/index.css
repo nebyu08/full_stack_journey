@@ -18,3 +18,11 @@
 h1{
     text-align: center;
 }
+
+.features{
+    margin: 2rem;
+}
+
+.features img{
+    margin: 1.5rem;
+}

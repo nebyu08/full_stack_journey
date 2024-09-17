@@ -16,22 +16,21 @@
   </form>
   <div id="recipeContainer" class="hidden">
 
-    <% if(locals.displayInfo) { %>
+    <% if(locals.recepie) { %>
       <h3>Ingredients:</h3>
       <ul id="ingredientsList">
-        <li>Protein name, protein preparation</li>
-        <li>Salsa name</li>
-        <li>Every other topping</li>
+        <li><%= recepie.ingredients.protein.name,recepie.ingredients.preparation  %></li>
+        <li><%= recepie.ingredients.salsa.name  %></li>
+        <li> <% recepie.ingredients.toppings.forEach(element => { %>
+          <li> <%= element.quantity %> of <%= element.name %> </li>
+      </li>
+      <% }) %>
       </ul>
 
       <% } else { %>
       <h2>Pick your favourite taco ingredient 👆</h2>
         
       <% } %>
-      
-   
-
-
 
   </div>
 </body>

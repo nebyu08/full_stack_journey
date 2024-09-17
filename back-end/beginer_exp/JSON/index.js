@@ -11,34 +11,39 @@ const recipeJSON =
 
 const jsObject=JSON.parse(recipeJSON);
 
+let data;
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-  res.render("index.ejs");
+  res.render("index.ejs",{recepie:data});
 });
 
 app.post("/recipe", (req, res) => {
+  
   const selected=req.body.choice;
-  console.log("hey check this out");
 
-  const appropriateName=(selection)=>{
-    if(selection==='chicken') return 'Chicken Taco';
-    if(selection==='beef') return 'Beef Taco';
-    if(selection==='fish') return 'Fish Taco';
+  //lets match it with options
+  switch(selected){
+    case "chicken taco":
+       data=jsObject[0];
+      break;
+    
+      case "beef":
+      data=jsObject[1];
+      break;
+    
+      case "fish":
+      data=jsObject[2];
+      break;
+
+    default:
+      break
+
   }
-  const formalChosen=appropriateName(selected);
 
-  const selectedRecipe=jsObject.find(recepie => recepie.name===formalChosen);
-
-
-  console.log(selectedRecipe);
-  if (selectedRecipe) {
-    console.log(selectedRecipe.name);
-    console.log(selectedRecipe.ingredients);
-
-  }
+  res.redirect("/")
 
 });
 

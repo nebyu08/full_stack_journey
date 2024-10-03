@@ -32,22 +32,22 @@ app.get("/", async (req, res) =>{
   }
 });
 app.post('/add',async(req,res)=>{
+  //get data from countries table
   try{
     const inputData=req.body.country;
-    //add data
+    const result=await db.query("SELECT country_code FROM countries WHERE LOWER(country_name) = $1 ",[inputData.toLowerCase()]);
+    const accronym=result.rows[0].country_code;
     
-    db.query('INSERT INTO visited_countries(country_code) VALUES ($1)',[inputData]);;
-    const data=await db.query('SELECT * FROM visited_countries');
-    const countries=data.rows;
+    //add data into visited_countries
+    await db.query('INSERT INTO visited_countries(country_code) VALUES ($1) ',[accronym]);
 
-    res.render('index.ejs',{countries:countries,total:countries.length});
+    res.redirect('/');
   }
   catch(err){
-    console.error('error inserting data:',err);
+    console.error('error occured is,',err);
   }
+
 })
-
-
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);

@@ -108,11 +108,11 @@ country_code CHAR(2) NOT NULL,
 user_id INTEGER REFERENCES users(id)
 );
 
-INSERT INTO users (name, color)
-VALUES ('Angela', 'teal'), ('Jack', 'powderblue');
+  INSERT INTO users (name, color)
+  VALUES ('Angela', 'teal'), ('Jack', 'powderblue');
 
-INSERT INTO visited_countries (country_code, user_id)
-VALUES ('FR', 1), ('GB', 1), ('CA', 2), ('FR', 2 );
+  INSERT INTO visited_countries (country_code, user_id)
+  VALUES ('FR', 1), ('GB', 1), ('CA', 2), ('FR', 2 );
 
 SELECT *
 FROM visited_countries

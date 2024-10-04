@@ -17,7 +17,7 @@ db.connect();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-let currentUserId = 2;
+let currentUserId = 1;
 
 let users = [
   { id: 1, name: "Angela", color: "teal" },
@@ -30,7 +30,6 @@ async function checkVisisted() {
   result.rows.forEach((country) => {
     countries.push(country.country_code);
   });
-
   return countries;
 }
 app.get("/", async (req, res) => {
@@ -59,51 +58,16 @@ app.post("/add", async (req, res) => {
         [countryCode]
       );
       res.redirect("/");
-    }catch (err) {
+    } catch (err) {
       console.log(err);
     }
   } catch (err) {
     console.log(err);
   }
 });
-
-app.post("/user", async (req, res) => {
-  currentUserId=req.body['user'];
-  const chosenUser=users.filter(user=>user.id==currentUserId);
-  const chosenId=chosenUser[0].id
- 
-  //choose the user from THE database
-  try{
-    const queriedValue=await db.query('SELECT country_code FROM userVisited where user_id=$1',[chosenId]);  
-    const rows=queriedValue.rows;
-
-    console.log('rows is :',rows);
-
-    console.log('extract from db',rows);
-
-    const returned=users.find(user=>user.id==chosenId);
-      const color=returned.color;
-
-    res.render(
-       "index.ejs",{
-       countries:rows,
-       total:rows.length,
-       users:users,
-       color:color
-      })
-
-
-  }catch(error){
-    console.error('Error Executing query ',error);
-  }
-
-   
-});
+app.post("/user", async (req, res) => {});
 
 app.post("/new", async (req, res) => {
-
-
-
   //Hint: The RETURNING keyword can return the data that was inserted.
   //https://www.postgresql.org/docs/current/dml-returning.html
 });

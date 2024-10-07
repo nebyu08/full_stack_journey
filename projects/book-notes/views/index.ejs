@@ -10,10 +10,13 @@
     <div class="container">
         <%- include('partials/header.ejs') %>
         <h2>Books i have read</h2>
-        
-        
-
+        <% if(imgSrc){ %>
+            <img src="<%= imgSrc %> " width=" <%=imgSrc.width  %> " height="<%= imgSrc.height %>" alt="Book Cover"/>
+            <p> <%= imgSrc  %> </p>
+            <% } else { %>
+                <p>There is no eror</p>
+        <% } %>
     </div>
     
-</body>
+</body>     
 </html>

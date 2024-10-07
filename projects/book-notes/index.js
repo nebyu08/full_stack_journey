@@ -52,6 +52,11 @@ app.get("/",async(req,res)=>{
 
     const image=await Promise.all(imagePromise);
 
+    //push data into the image database database
+    image.forEach((element)=>{
+        db.query('INSERT INTO bookcover(img) VALUES ($1)',[element]);
+    } )
+
     console.log(image);
 
     res.render("index.ejs");

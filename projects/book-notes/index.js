@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import axios, { Axios } from 'axios';
+import axios from 'axios';
+import pg from 'pg';
 
 const app=express();
 const port=3000;
@@ -8,11 +9,22 @@ const port=3000;
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended:true}));
 
+//connect to a database
+const db=new pg.Client({
+    user:'postgres',
+    host:'localhost',
+    database:'my_note',
+    password:'123456',
+    port:'5432'
+})
+
+db.connect();
+
 
 async function getImage(title) {
     const url=`https://openlibrary.org/search.json?title=${encodeURIComponent(title)}`;
     const imageSize="L";
-    try{
+    try{    
         const response =await axios.get(url);
         if(response.data.docs.length>0 && response.data.docs[0].cover_i){
             const firstBook=response.data.docs[0];
@@ -28,10 +40,22 @@ async function getImage(title) {
 }
 
 app.get("/",async(req,res)=>{
-    const title='Light';
-    const imgSrc=await getImage(title);
 
-    res.render("index.ejs",{imgSrc});
+    //get data from title database and quer for its book cover
+    const response=await db.query('select title from title');
+    const row=response.rows;
+
+    //get the images
+    const imagePromise=row.map(async(element)=>{
+        return await getImage(element.title);
+    })
+
+    const image=await Promise.all(imagePromise);
+
+    console.log(image);
+
+    res.render("index.ejs");
+
 })
 
 app.listen(port,()=>{

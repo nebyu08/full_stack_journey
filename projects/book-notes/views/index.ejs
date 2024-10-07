@@ -4,19 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Notes </title>
-    <link rel="icon" type="image/png" href="images/open-book.png">
+    <link rel="icon" type="image/png" href="images/book.png">
+    <link rel="stylesheet" href="index.css">
+    <link href="css/bootstrap.css" rel="stylesheet">
+
 </head>
 <body>
-    <div class="container">
+   <section id="main">
         <%- include('partials/header.ejs') %>
-        <h2>Books i have read</h2>
-        <% if(imgSrc){ %>
-            <img src="<%= imgSrc %> " width=" <%=imgSrc.width  %> " height="<%= imgSrc.height %>" alt="Book Cover"/>
-            <p> <%= imgSrc  %> </p>
-            <% } else { %>
-                <p>There is no eror</p>
-        <% } %>
-    </div>
-    
+        <h2>Book i've Read</h2>
+        <p>This is all the book i read.😊 </p>
+        <hr>
+        
+   </section>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>    
 </body>     
 </html>

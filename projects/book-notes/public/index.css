@@ -1,10 +1,15 @@
 body{
     background-color: #000000;
+    color:#ffffff;
 }
 
-.container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#main{
+    margin-left: 30%;
+    margin-right: 30%;
     height: 100vh;
 }
+
+h1{
+    color:green;
+}
+

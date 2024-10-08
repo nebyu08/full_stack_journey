@@ -3,10 +3,25 @@ body{
     color:#ffffff;
 }
 
-#main{
+
+.container{
+    display: flex;
+    justify-content: space-around;
     margin-left: 30%;
     margin-right: 30%;
     height: 100vh;
+}
+
+.book-item{
+    overflow: hidden;
+    margin:15px;
+
+}
+
+img{
+    width:200px;
+    height:300px ;
+    object-fit: contain;
 }
 
 h1{

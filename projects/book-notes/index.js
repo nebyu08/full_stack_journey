@@ -30,7 +30,7 @@ async function getImage(title) {
             const firstBook=response.data.docs[0];
             const coverId=firstBook.cover_i;
             const imgLink= `https://covers.openlibrary.org/b/id/${coverId}-${imageSize}.jpg`;
-           
+
             return imgLink;
         }
     }
@@ -39,27 +39,15 @@ async function getImage(title) {
     }
 }
 
+
 app.get("/",async(req,res)=>{
 
     //get data from title database and quer for its book cover
-    const response=await db.query('select title from title');
+    const response=await db.query('select * FROM allbook');
     const row=response.rows;
 
-    //get the images
-    const imagePromise=row.map(async(element)=>{
-        return await getImage(element.title);
-    })
-
-    const image=await Promise.all(imagePromise);
-
-    //push data into the image database database
-    image.forEach((element)=>{
-        db.query('INSERT INTO bookcover(img) VALUES ($1)',[element]);
-    } )
-
-    console.log(image);
-
-    res.render("index.ejs");
+        
+    res.render("index.ejs",{books:row});
 
 })
 

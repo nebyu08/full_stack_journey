@@ -15,6 +15,27 @@
         <h2>Book i've Read</h2>
         <p>This is all the book i read.😊 </p>
         <hr>
+
+        <!-- Books -->
+         <div class="container">
+            <% books.forEach(book => { %>
+                <div class="book-item" >
+                    <div class="book-image" >
+                        <img src="<%= book.img %>" alt="image of book cover" >
+                    </div>
+
+                    <div class="book-info" >
+                        <h2> <%=book.title  %> </h2>
+                        <p> <%=book.shortnote %> </p>
+                    </div>
+
+                </div>
+                
+            <% }); %>
+
+         </div>
+
+        </div>
         
    </section>
 

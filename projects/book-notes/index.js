@@ -67,6 +67,19 @@ app.get("/books",async(req,res)=>{
 
 })
 
+app.get("/fullnote",async(req,res)=>{
+    const id=req.query.id;
+    const response=await db.query('SELECT * FROM allbook where id=$1',[id]);
+    const row=response.rows[0];
+
+    res.render('fullnote.ejs',{book:row});
+
+})
+
+app.get('/home',(req,res)=>{
+    res.redirect("/");
+})
+
 app.listen(port,()=>{
     console.log('Server is listening on port:',port);
 })

@@ -11,13 +11,20 @@
 </head>
 <body>
    <section id="main">
-        <%- include('partials/header.ejs') %>
-        <h2>Book i've Read</h2>
-        <p>This is all the book i read.😊 </p>
-        <hr>
+            <!-- intro -->
+            <div class="container">
+                <%- include('partials/header.ejs') %>
+            <h2>Book i've Read</h2>
+            <p>This is all the book i read.😊 </p>
+            <hr>
 
-        <!-- Books -->
-         <div class="container">
+            <!-- order by certain values -->
+             <p>order the books by 
+             <a href="/books?sort=title_asc" >Ascending order </a>, 
+             <a href="/books?sort=title_desc">Descending order</a>
+
+             </p>
+            <!-- Books -->
             <% books.forEach(book => { %>
                 <div class="book-item" >
                     <div class="book-image" >

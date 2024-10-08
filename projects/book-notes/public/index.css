@@ -6,25 +6,42 @@ body{
 
 .container{
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     margin-left: 30%;
     margin-right: 30%;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .book-item{
-    overflow: hidden;
-    margin:15px;
+   display: flex;
+   flex-direction: row;
+   align-items: flex-start;
+   margin-bottom: 30px;
+   padding: 20px;
+   width: 100%;
+}
 
+.book-image{
+    margin-right: 20px;
+}
+
+.book-info{
+    padding-right: 20px ;
 }
 
 img{
     width:200px;
     height:300px ;
     object-fit: contain;
+    
 }
 
 h1{
     color:green;
 }
 
+a:link{
+    color:  #2e86c1 ;
+}

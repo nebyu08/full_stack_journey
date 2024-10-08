@@ -45,9 +45,25 @@ app.get("/",async(req,res)=>{
     //get data from title database and quer for its book cover
     const response=await db.query('select * FROM allbook');
     const row=response.rows;
-
         
     res.render("index.ejs",{books:row});
+
+})
+
+app.get("/books",async(req,res)=>{
+    var query='SELECT * FROM allbook';
+    const sort=req.query.sort;
+
+    if(sort==='title_asc'){
+        query+=' ORDER BY title ASC';
+    }else if(sort==='title_desc'){
+        query+=' ORDER BY title DESC';
+    }
+
+    const response=await db.query(query);
+    const row=response.rows;
+
+    res.render('index.ejs',{books:row});
 
 })
 

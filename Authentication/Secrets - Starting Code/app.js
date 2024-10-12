@@ -4,7 +4,7 @@ dotenv.config()
 import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
-import md5 from 'md5';
+import bcrypt from 'bcrypt';
 
 const app=express();
 const port=3000;
@@ -15,6 +15,9 @@ app.set('view engine','ejs');
 app.use(bodyParser.urlencoded({
     extended:true
 }))
+
+//no of hash rounds
+const saltRounds=10;
 
 
 //connect to a databse
@@ -46,36 +49,48 @@ app.get('/login',(req,res)=>{
     res.render('login');
 })
 
-app.post("/register",async(req,res)=>{
-    const newUser=new User({
-        email:req.body.username,
-        password:md5(req.body.password)
-    });
+app.post("/register",(req,res)=>{
+    
+    //preparing to hash
+    bcrypt.hash(req.body.password,saltRounds,function(err,hash){
 
-    //save to db
-    try{
-        await newUser.save();
+        const newUser=new User({
+            email:req.body.username,
+            password:hash
+        });
+    
+        //save to db
+        newUser.save();
+
         res.render('secrets');
-    }catch(err){
-        console.log(err);
-        res.status(500).send("Error Saving User.");
-    }
+
+    } );
+    
 })
 
 app.post("/login",async(req,res)=>{
     const username=req.body.username;
-    const password=md5(req.body.password);
+    const password=req.body.password;
 
+    //check
     try{
-        const foundUser=await User.findOne({email:username});
+        const foundUser=await  User.findOne({email:username});
         if(foundUser){
-            if(foundUser.password===password){
+            const   result=await bcrypt.compare(password,foundUser.password);
+            if(result){
                 res.render('secrets');
+            }else{
+                res.status(401).send('Incorrect password');
             }
+        }
+        else{
+            res.status(404).send('user not found');
         }
     }catch(err){
         console.log(err);
+        res.status(500).send('Error during loging');
     }
+    
 })
 
 app.listen(port,()=>{

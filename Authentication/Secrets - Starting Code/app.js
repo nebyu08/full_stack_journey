@@ -39,7 +39,8 @@ mongoose.connect("mongodb://localhost:27017/userDB");
 const userSchema=new mongoose.Schema({
     email:String,
     password:String,
-    googleId:String
+    googleId:String,
+    secret:String
 })
 
 userSchema.plugin(passportLocalMongose);
@@ -102,13 +103,16 @@ app.get('/login',(req,res)=>{
     res.render('login');
 });
 
-app.get("/secrets",function(req,res){
-    if(req.isAuthenticated()){
-        res.render("secrets");
-    }else{
-        res.redirect("login");
+app.get("/secrets", async function(req, res) {
+    try {
+        const foundUsers = await User.find({ 'secret': { $ne: null } }); // Use await with find
+
+        res.render('secrets', { usersWithSecrets: foundUsers });
+    } catch (err) {
+        console.log(err);
+        res.status(500).send("Server error"); // Handle errors appropriately
     }
-} ) 
+});
 
 app.post("/register",(req,res)=>{
     User.register({username:req.body.username},req.body.password,function(err,user){
@@ -138,6 +142,38 @@ app.post("/login",async(req,res)=>{
         }
     })
 })
+
+app.get("/submit",function(req,res){
+    console.log(req.user)
+    if(req.isAuthenticated()){
+        res.render("submit");
+    }else{
+        res.redirect("/login");
+    }
+})
+
+app.post("/submit",async function(req,res){
+
+    const userSecret=req.body.secret;
+    try{
+        const foundUser=await User.findById(req.user.id);
+
+        if(foundUser){
+            foundUser.secret=userSecret;
+            await foundUser.save();
+            res.redirect("/secrets");
+        }
+        else{
+            res.status(404).send('User Not Found');
+        }
+
+    }catch(err){
+        console.log(err);
+        res.status(500).send('Server error');
+    }
+
+});
+
 
 app.get("/logout",function(req,res,next){
    req.logout(function(err){

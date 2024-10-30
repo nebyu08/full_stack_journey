@@ -1,10 +1,9 @@
-import Alert from "./components/alert"
+//import Alert from "./components/alert"
+import Button from "./components/Button"
 
 function App(){
-
-  return <Alert>
-    Hello there <span>mate</span> 
-    </Alert>
+  return <Button  onClick={()=> console.log('Clicked button') }>dragon </Button>
+  
 }
 
-export default App
+export default App;

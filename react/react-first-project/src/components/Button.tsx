@@ -4,6 +4,7 @@ interface Prop{
     onClick:()=>void;
 }
 
+
 function Button({children,color='primary',onClick}:Prop){
     return <button type="button" className={'btn btn-' + color} onClick={onClick} > {children} </button>
 }

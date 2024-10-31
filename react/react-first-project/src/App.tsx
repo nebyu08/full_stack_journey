@@ -1,9 +1,9 @@
-import Button from "./components/Button/Button";
+import Like from "./components/Like";
 
 function App(){
   return (
     <div>
-      <Button font-size='96px' onClick={()=> {'click'}} >Button</Button>
+      <Like onClick={()=>{console.log('clicked')}} />
       </div>
   )
 }

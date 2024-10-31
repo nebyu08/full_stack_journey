@@ -1,9 +1,9 @@
-import { FaCalendar } from "react-icons/fa";
+import Button from "./components/Button/Button";
 
 function App(){
   return (
     <div>
-      <FaCalendar color='purple' size="40" />
+      <Button font-size='96px' onClick={()=> {'click'}} >Button</Button>
       </div>
   )
 }

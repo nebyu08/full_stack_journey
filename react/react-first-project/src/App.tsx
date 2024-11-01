@@ -1,11 +1,12 @@
-import ExpandableText from "./components/ExpandableText";
+import Form from "./components/formus";
+
 
 function App(){
 
   return (
-    <ExpandableText maxChar={200}>
-      Hello World
-      </ExpandableText>         
+   <div>
+    <Form/>
+   </div>    
   )
   
 }

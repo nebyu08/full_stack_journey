@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import userService,{ User } from './services/userService';
+import { useEffect} from "react";
 import { CanceledError } from "./services/apiClient";
+import userService,{ User } from './services/userService';
+import useUsers from "./components/hooks/useUsers";
 
 function App() {
-  const [users, setUser] = useState<User[]>([]);
-  const [error, setError] = useState("");
-  const [isLoading, setLoading] = useState(true);
+  
+  const {users,error,isLoading,setUser,setError,setLoading}=useUsers();
 
   useEffect(() => {
       const {request,cancel}=userService.getAll<User>();

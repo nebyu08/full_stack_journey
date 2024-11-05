@@ -14,4 +14,4 @@ const ExpenseFilter = ({onSelectCategory}:Props) => {
   )
 }
 
-export default ExpenseFilter
+export default ExpenseFilter;

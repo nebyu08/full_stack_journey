@@ -1,10 +1,6 @@
-import apiClient,{CanceledError} from "./services/api-client";
 import { useEffect, useState } from "react";
-
-interface User {
-  id: number;
-  name: string;
-}
+import userService,{ User } from './services/userService';
+import { CanceledError } from "./services/apiClient";
 
 function App() {
   const [users, setUser] = useState<User[]>([]);
@@ -12,12 +8,8 @@ function App() {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    const controller = new AbortController();
-
-    apiClient
-      .get("/users", {
-        signal: controller.signal,
-      })
+      const {request,cancel}=userService.getAllUsers();
+      request
       .then((resp) => {
         setUser(resp.data);
         setLoading(false);
@@ -28,25 +20,28 @@ function App() {
         setLoading(false);
       });
 
-    return () => controller.abort();
+    return () => cancel();
   }, []);
 
-  const deleteUSer=(user:User)=>{
+  // deleting user
+  const deleteUser=(user:User)=>{
     const originalUsers=[...users];
     setUser(users.filter((u)=> u.id!==user.id ));
     // update the server
-    apiClient.delete("/users/"+user.id)
+    userService.deleteUser(user.id)
     .catch(e=>{
       setError(e.message);
       setUser(originalUsers);
     })
   }
 
+  // adding users
+
   const insertUser=()=>{
     const originalUsers=[...users];
     const user={id:0,name:'nebiti'}
     setUser([user,...users]);
-    apiClient.post("/users",user)
+    userService.createUser(user)
     .then(({data:savedUser})=> setUser([savedUser,...users]))
     .catch(err=>{
       setError(err.message);
@@ -54,6 +49,7 @@ function App() {
     })
   }
 
+  // update values
   const updateUser=(user:User)=>{
     const updatedUser={...user,name:user.name+'!'};
     const originalUsers=[...users];
@@ -63,8 +59,8 @@ function App() {
     );
 
     //update the server
-    apiClient.patch("/users/"+user.id,updateUser)
-    .catch(e=>{
+    userService.updateUser(updatedUser)
+    .catch(e =>{
       setError(e.message);
       setUser(originalUsers);
     })
@@ -81,7 +77,7 @@ function App() {
             {user.name}{" "}
             <div>
             <button onClick={()=> updateUser(user)} className="btn btn-outline-secondary mx-4">Update</button>
-            <button onClick={()=> deleteUSer(user) } className="btn btn-outline-danger">Delete</button>{" "}
+            <button onClick={()=> deleteUser(user) } className="btn btn-outline-danger">Delete</button>{" "}
             </div>
             
           </li>

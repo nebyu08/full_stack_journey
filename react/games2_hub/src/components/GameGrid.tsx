@@ -17,9 +17,9 @@ function GameGrid({gameQuery}:Props) {
     skeletons.push(i);
   }
 
+  if(error) return <Text>{error} </Text>
+
   return (
-    <>
-      {error && <Text>{error} </Text>}
       <SimpleGrid
         columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
         padding={10}
@@ -37,7 +37,6 @@ function GameGrid({gameQuery}:Props) {
           </GameCardContainer>
         ))}
       </SimpleGrid>
-    </>
   );
 }
 

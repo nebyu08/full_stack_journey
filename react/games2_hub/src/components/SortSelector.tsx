@@ -15,11 +15,11 @@ const SortSelector = ({onSelectSortOrder,sortOrder }:Props) => {
         {value:'-metacritic',label:'Popularity'},
         {value:'-rating',label:'Average rating'}
     ]
-    const currentSortOrder=sortOrders.find(order=> order.value === sortOrder  || 'Relevance' )
+    const currentSortOrder=sortOrders.find(order => order.value === sortOrder)
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-        Order by :{currentSortOrder?.label}
+        Order by :{currentSortOrder?.label ||  'Relevance'  }
       </MenuButton>
       <MenuList>
       {sortOrders.map(order => <MenuItem onClick={()=> onSelectSortOrder(order.value) } key={order.value} value={order.value} > {order.label} </MenuItem> )}

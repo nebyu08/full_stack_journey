@@ -1,11 +1,10 @@
 import "./App.css";
-import Counter from "./state-management/Counter";
-// import TodoList from "./react-query/ToDoList";
+import TaskList from "./state-management/TaskList";
 
 function App() {
   return (
     <>
-    <Counter/>
+    <TaskList/>
     </>
   )
 }

@@ -1,12 +1,12 @@
 import "./App.css";
-import TaskList from "./state-management/TaskList";
+import LoginStatus from "./state-management/authReducer";
 
 function App() {
   return (
     <>
-    <TaskList/>
+      <LoginStatus />
     </>
-  )
+  );
 }
 
 export default App;

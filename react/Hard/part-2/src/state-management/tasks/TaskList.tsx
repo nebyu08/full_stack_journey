@@ -1,14 +1,16 @@
+import useAuth from "../auths/useAuth";
 import { useContext } from "react";
-import TasksContext from "./contexts/tasksContext";
-import AuthContext from "./contexts/authContext";
+import TasksContext from "./tasksContext";
+
+const useTasks = () => useContext(TasksContext);
 
 const TaskList = () => {
-  const {tasks,dispatch} =useContext(TasksContext);
-  const {user}=useContext(AuthContext);
-  
+  const { tasks, dispatch } = useTasks();
+  const { user } = useAuth();
+
   return (
     <>
-    <p>User:{user} </p>
+      <p>User:{user} </p>
       <button
         onClick={() =>
           dispatch({
@@ -29,7 +31,7 @@ const TaskList = () => {
             <span className="flex-grow-1">{task.title}</span>
             <button
               className="btn btn-outline-danger"
-              onClick={() => dispatch({type:'DELETE',taskId:task.id}) }
+              onClick={() => dispatch({ type: "DELETE", taskId: task.id })}
             >
               Delete
             </button>
